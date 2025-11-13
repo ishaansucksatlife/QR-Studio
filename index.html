@@ -576,7 +576,7 @@
                     id="qrContent" 
                     placeholder="Enter URL, text, email, or any content..."
                     maxlength="1000"
-                >https://github.com</textarea>
+                >https:
             </div>
         </div>
 
@@ -680,19 +680,17 @@
 
             init() {
                 this.bindEvents();
-                this.generateQRCode(); // Generate initial QR code
+                this.generateQRCode(); 
             }
 
             bindEvents() {
-                // Generate QR code on button click
+
                 this.elements.generateBtn.addEventListener('click', () => this.generateQRCode());
 
-                // Update QR code on input changes
                 this.elements.qrContent.addEventListener('input', () => this.debounce(this.generateQRCode, 500)());
                 this.elements.qrSize.addEventListener('input', () => this.updateSizeValue());
                 this.elements.qrMargin.addEventListener('input', () => this.updateMarginValue());
 
-                // Color picker synchronization
                 this.elements.foregroundColor.addEventListener('input', (e) => {
                     this.elements.foregroundColorText.value = e.target.value;
                     this.debounce(this.generateQRCode, 500)();
@@ -717,10 +715,8 @@
                     }
                 });
 
-                // Download button
                 this.elements.downloadBtn.addEventListener('click', () => this.downloadQRCode());
 
-                // Slider updates
                 this.elements.qrSize.addEventListener('input', () => this.debounce(this.generateQRCode, 500)());
                 this.elements.qrMargin.addEventListener('input', () => this.debounce(this.generateQRCode, 500)());
             }
@@ -753,7 +749,7 @@
 
             async generateQRCode() {
                 const content = this.elements.qrContent.value.trim();
-                
+
                 if (!content) {
                     this.showStatus('Please enter some content to generate QR code', 'error');
                     this.elements.qrCode.src = '';
@@ -769,8 +765,7 @@
                     const foreground = this.elements.foregroundColor.value.replace('#', '');
                     const background = this.elements.backgroundColor.value.replace('#', '');
 
-                    // Using a reliable QR code API
-                    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?
+                    const qrUrl = `https:
                         data=${encodeURIComponent(content)}
                         &size=${size}x${size}
                         &margin=${margin}
@@ -780,7 +775,7 @@
                         &qzone=1`.replace(/\s/g, '');
 
                     this.elements.qrCode.src = qrUrl;
-                    
+
                     this.elements.qrCode.onload = () => {
                         this.setLoading(false);
                         this.elements.downloadBtn.disabled = false;
@@ -821,19 +816,17 @@
             showStatus(message, type) {
                 this.elements.statusMessage.textContent = message;
                 this.elements.statusMessage.className = `status-message status-${type}`;
-                
+
                 setTimeout(() => {
                     this.elements.statusMessage.style.display = 'none';
                 }, 4000);
             }
         }
 
-        // Initialize the QR generator when the page loads
         document.addEventListener('DOMContentLoaded', () => {
             new QRGenerator();
         });
 
-        // Update initial slider values
         document.getElementById('qrSize').dispatchEvent(new Event('input'));
         document.getElementById('qrMargin').dispatchEvent(new Event('input'));
     </script>

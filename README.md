@@ -222,10 +222,6 @@ For complete terms and conditions, see the [LICENSE](LICENSE) file.
 
 **Made Plasma**
 
-[![GitHub stars](https://img.shields.io/github/stars/ishaansucksatlife/QR-Studio?style=social)](https://github.com/ishaansucksatlife/QR-Studio)
-[![GitHub forks](https://img.shields.io/github/forks/ishaansucksatlife/QR-Studio?style=social)](https://github.com/ishaansucksatlife/QR-Studio/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/ishaansucksatlife/QR-Studio)](https://github.com/ishaansucksatlife/QR-Studio/issues)
-
 *If you find this project helpful, please consider giving it a ⭐!*
 
 </div>
